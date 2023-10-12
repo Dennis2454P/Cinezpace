@@ -1,11 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Crear Ticket</title>
 </head>
 <body>
-Primer proyecto de CineZpace PAR peliculas
+<h1>Crear un nuevo Ticket</h1>
 
+<form th:object="${ticket}" th:action="@{/tickets/crear}" method="post">
+    <label>Título: <input type="text" th:field="*{titulo}" /></label><br>
+    <label>Número de Asiento: <input type="number" th:field="*{numAsiento}" /></label><br>
+    <label>Fecha: <input type="date" th:field="*{fecha}" /></label><br>
+    <label>Precio: <input type="number" th:field="*{precio}" step="0.01" /></label><br>
+    <button type="submit">Crear Ticket</button>
+</form>
+</body>
+</html>
+Vista para Listar Tickets (lista_tickets.html):
+html
+Copy code
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tickets</title>
+</head>
+<body>
+<h1>Lista de Tickets</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Número de Asiento</th>
+        <th>Fecha</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ticket : ${tickets}">
+        <td th:text="${ticket.id}"></td>
+        <td th:text="${ticket.titulo}"></td>
+        <td th:text="${ticket.numAsiento}"></td>
+        <td th:text="${#dates.format(ticket.fecha, 'dd-MM-yyyy')}"></td>
+        <td th:text="${ticket.precio}"></td>
+        <td>
+            <a th:href="@{/tickets/{id}(id=${ticket.id})}">Ver</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+Vista para Ver un Ticket (ver_ticket.html):
+html
+Copy code
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Ticket</title>
+</head>
+<body>
+<h1>Detalle del Ticket</h1>
+
+<p>ID: <span th:text="${ticket.id}"></span></p>
+<p>Título: <span th:text="${ticket.titulo}"></span></p>
+<p>Número de Asiento: <span th:text="${ticket.numAsiento}"></span></p>
+<p>Fecha: <span th:text="${#dates.format(ticket.fecha, 'dd-MM-yyyy')}"></span></p>
+<p>Precio: <span th:text="${ticket.precio}"></span></p>
+
+<a th:href="@{/tickets/listar}">Volver a la lista de Tickets</a>
 </body>
 </html>
