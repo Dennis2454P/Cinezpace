@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <h2>Iniciar Sesión</h2>
-<form action="/login" method="post">
+<form action="/login" method="post" th:object="${EnvioDeLogin}">
     <label >Nombre de Usuario:</label>
-    <input type="text" name="nombreUsuario" required><br><br>
+    <input type="text" th:field="*{nombre}" name="nombre" required><br><br>
 
     <label >Contraseña:</label>
-    <input type="password" name="contrasena" required><br><br>
+    <input th:field="*{contrasena}" type="password" name="contrasena" required><br><br>
 
-    <input type="submit" value="Iniciar Sesión">
+    <button type="submit" >Iniciar Sesion</button>
 </form>
 </body>
 </html>

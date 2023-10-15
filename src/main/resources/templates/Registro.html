@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Registro</title>
 </head>
 <body>
 <h2>Formulario de Registro</h2>
-<form action="procesar_registro.php" method="post">
+<form th:object="${EnvioDeRegistro}" action="/register" method="post">
     <label for="nombres">Nombres:</label>
-    <input type="text" name="nombres" id="nombres" required><br><br>
+             <input th:field="*{nombre}" type="text" name="nombres" id="nombres" required><br><br>
 
     <label for="apellido">Apellido:</label>
-    <input type="text" name="apellido" id="apellido" required><br><br>
+              <input th:field="*{apellido}"   type="text" name="apellido" id="apellido" required><br><br>
 
     <label for="telefono">Teléfono:</label>
-    <input type="tel" name="telefono" id="telefono" required><br><br>
+                <input th:field="*{telefono}" name="telefono" id="telefono" required><br><br>
 
     <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required><br><br>
+               <input t th:field="*{email}" ype="email" name="email" id="email" required><br><br>
 
     <label for="contrasena">Contraseña:</label>
-    <input type="password" name="contrasena" id="contrasena" required><br><br>
+                <input th:field="*{contrasena}" type="password" name="contrasena" id="contrasena" required><br><br>
 
     <button type="submit" value="Registrarse">registro</button>
 </form>
