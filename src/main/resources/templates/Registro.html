@@ -5,6 +5,24 @@
     <title>Registro</title>
 </head>
 <body>
-dddd
+<h2>Formulario de Registro</h2>
+<form action="procesar_registro.php" method="post">
+    <label for="nombres">Nombres:</label>
+    <input type="text" name="nombres" id="nombres" required><br><br>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" name="apellido" id="apellido" required><br><br>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" name="telefono" id="telefono" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required><br><br>
+
+    <label for="contrasena">Contraseña:</label>
+    <input type="password" name="contrasena" id="contrasena" required><br><br>
+
+    <button type="submit" value="Registrarse">registro</button>
+</form>
 </body>
 </html>

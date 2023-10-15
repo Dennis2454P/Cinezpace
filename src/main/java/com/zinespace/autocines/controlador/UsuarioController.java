@@ -46,7 +46,7 @@ public class UsuarioController {
 
             return "perfil";
         } else {
-            return "errores";
+            return "perfil";
         }
     }
 //METODOS DE ENVIO DE DATOS
