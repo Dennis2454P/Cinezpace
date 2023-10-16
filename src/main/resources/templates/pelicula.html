@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de la Película</title>
+</head>
+<body>
+    <h1>Detalles de la Película</h1>
+    <div th:if="${pelicula != null}">
+        <p><strong>Título:</strong> <span th:text="${pelicula.titulo}"></span></p>
+        <p><strong>Duración:</strong> <span th:text="${pelicula.duracion}"></span> minutos</p>
+        <p><strong>Fecha de Lanzamiento:</strong> <span th:text="${#dates.format(pelicula.fecha, 'dd/MM/yyyy')}"></span></p>
+        <p><strong>Sinopsis:</strong> <span th:text="${pelicula.sinopsis}"></span></p>
+        <p><strong>Categoría:</strong> <span th:text="${pelicula.categoria.nombre}"></span></p>
+    </div>
+    <div th:unless="${pelicula != null}">
+        <p>La película no existe.</p>
+    </div>
+    <a th:href="@{/peliculas}" class="btn btn-primary">Volver a la lista de películas</a>
+</body>
+</html>
+
+

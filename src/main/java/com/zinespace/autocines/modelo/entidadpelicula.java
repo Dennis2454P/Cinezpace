@@ -1,63 +1,73 @@
 package com.zinespace.autocines.modelo;
 
-import jakarta.persistence.Column;
+import java.sql.Date;
+//import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.JoinColumn;
+//import jakarta.persistence.ManyToOne;
+
 @Entity
 public class entidadpelicula {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
-	@Column(name = "titulo") // Anota el campo "titulo"
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String titulo;
-
-    @Column(name = "duracion") // Anota el nuevo campo "duracion"
-    private String Duracion;
-
-    @Column(name = "fecha") // Anota el campo "fecha"
-    private String Fecha;
-
-    @Column(name = "sinopsis") // Anota el campo "sinopsis"
+    private int duracion;
+    private Date fecha;
     private String sinopsis;
+    
+    //@ManyToOne
+  	//@JoinColumn(name = "categoria_id")
+  	//private Categoria categoria;
+    
+    public entidadpelicula(String titulo, int duracion, Date fecha, String sinopsis) {
+        this.titulo = titulo;
+        this.duracion = duracion;
+        this.fecha = fecha;
+        this.sinopsis = sinopsis;
+    }
 
-	@ManyToOne
-	@JoinColumn(name = "categoria_id")
-	//private Categoria categoria;
-	
-	
-	public Long getId() {
-		return Id;
-	}
-	public void setId(Long id) {
-		Id = id;
-	}
-	public String getTitulo() {
-		return titulo;
-	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-	public String getDuracion() {
-		return Duracion;
-	}
-	public void setDuracion(String duracion) {
-		Duracion = duracion;
-	}
-	public String getFecha() {
-		return Fecha;
-	}
-	public void setFecha(String fecha) {
-		Fecha = fecha;
-	}
-	public String getSinopsis() {
-		return sinopsis;
-	}
-	public void setSinopsis(String sinopsis) {
-		this.sinopsis = sinopsis;
-	}
+    // Getters y setters
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getSinopsis() {
+        return sinopsis;
+    }
+
+    public void setSinopsis(String sinopsis) {
+        this.sinopsis = sinopsis;
+    }
 }
